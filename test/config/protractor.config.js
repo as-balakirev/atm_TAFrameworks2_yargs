@@ -7,7 +7,7 @@ exports.config = {
     framework: 'mocha',
 
     specs: [
-        '../specs/*.js'
+        '../specs/*.test.js'
     ],
 
     capabilities: {

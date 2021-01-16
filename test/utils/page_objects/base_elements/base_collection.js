@@ -1,3 +1,5 @@
+const logger = require("../../../config/logger.config.js");
+
 class Collection {
     constructor(elementName, selector) {
         this.collection = element.all(by.css(selector));
@@ -15,8 +17,10 @@ class Collection {
         const arrayOfElementTexts = await this.collection.getText();
         const elementToClickIndex = arrayOfElementTexts.indexOf(textToClick);
         if (elementToClickIndex === -1) {
+            logger.error(`No element with [${textToClick}] text found!`);
             throw new Error(`No element with [${textToClick}] text found!`);
         }
+        logger.info(`Clicking on element with text "${textToClick}"`)
         return this.collection.get(elementToClickIndex).click();
     };
 };

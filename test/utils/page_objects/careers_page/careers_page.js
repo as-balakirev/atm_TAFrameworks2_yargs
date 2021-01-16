@@ -1,6 +1,7 @@
 const BasePage = require("../base_page/base_page");
 const Element = require("../base_elements/base_element");
 const Collection = require("../base_elements/base_collection.js");
+const logger = require("../../../config/logger.config.js");
 const {Key} = require("selenium-webdriver");
 
 class CareersPage extends BasePage {
@@ -16,6 +17,7 @@ class CareersPage extends BasePage {
     }
     jobInputAction() {
         let jobInput = element(by.css('#new_form_job_search_1445745853_copy-keyword'));
+        logger.info(`Populating "JobInput" field with text`)
         browser.actions().click(jobInput).sendKeys(Key.SHIFT + 'automated ').keyUp(Key.SHIFT).sendKeys('testing ').sendKeys(Key.SHIFT + 'engineer').perform();
     }
     getLocationList() {
@@ -23,9 +25,11 @@ class CareersPage extends BasePage {
     }
     clickLocationListAction() {
         let locationList = element(by.xpath('//span[@class="select2-selection__arrow"]'));
+        logger.info(`Clicking to "Location List" dropdown`);
         browser.actions().click(locationList).perform();
     }
     selectLocationByText(location) {
+        logger.info(`Selecting location with text "${location}"`);
         return new Element('location', `//li[text()='${location}']`, true).click();
     }
     clickFindButton() {
@@ -33,6 +37,7 @@ class CareersPage extends BasePage {
     }
     clickFindButtonAction() {
         let findButton = element(by.xpath('//button[@type="submit"]'));
+        logger.info('Clicking "Find" button');
         browser.actions().click(findButton).perform();
     }
     getPositions() {

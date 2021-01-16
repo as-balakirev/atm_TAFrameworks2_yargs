@@ -1,5 +1,6 @@
 const {expect} = require("chai");
 const webDriver = require('selenium-webdriver');
+const logger = require("../config/logger.config.js");
 
 describe('selenium grid test suite',  function() {
     let driver;
@@ -9,9 +10,8 @@ describe('selenium grid test suite',  function() {
             .withCapabilities(webDriver.Capabilities.chrome())
             .build();
     });
-    after(function() {
-        driver.quit();
-    });
+    // after(function() {
+    // });
     it('should have an official EPAM site title', function() {
         driver.get('https://www.epam.com')
             .then(() => driver.executeScript('return document.title'))

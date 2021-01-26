@@ -15,11 +15,25 @@ describe('selenium grid test suite',  function() {
     it('should have an official EPAM site title', function() {
         driver.get('https://www.epam.com')
             .then(() => driver.executeScript('return document.title'))
-            .then((documentTitle) => expect(documentTitle).to.be.equal('EPAM | Enterprise Software Development, Design & Consulting'));
+            .then((documentTitle) => expect(documentTitle).to.be.equal('EPAM | Enterprise Software Development, Design & Consulting'))
+            .finally(driver.quit());
     });
     it('should have a correct host', function () {
         driver.get('https://www.epam.com')
             .then(() => driver.executeScript('return document.location.host'))
-            .then((host) => expect(host).to.be.equal('www.epam.com'));
+            .then((host) => expect(host).to.be.equal('www.epam.com'))
+            .finally(driver.quit());
+    });
+    it('should have an official EPAM site title2', function() {
+        driver.get('https://www.epam.com')
+            .then(() => driver.executeScript('return document.title'))
+            .then((documentTitle) => expect(documentTitle).to.be.equal('EPAM | Enterprise Software Development, Design & Consulting'))
+            .finally(driver.quit());
+    });
+    it('should have a correct host2', function () {
+        driver.get('https://www.epam.com')
+            .then(() => driver.executeScript('return document.location.host'))
+            .then((host) => expect(host).to.be.equal('www.epam.com'))
+            .finally(driver.quit());
     });
 });

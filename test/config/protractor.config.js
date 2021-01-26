@@ -11,7 +11,7 @@ exports.config = {
     ],
 
     capabilities: {
-        'browserName': 'chrome',
+        'browserName': yargs.firefox ? 'firefox' : 'chrome',
         shardTestFiles: yargs.instances > 1,
         maxInstances: yargs.instances || 1,
     },
@@ -19,7 +19,10 @@ exports.config = {
     baseUrl: 'localhost',
 
     mochaOpts: {
-        reporter: 'spec',
+        reporter: 'mochawesome',
+        reporterOptions: {
+          overwrite: true
+        },
         timeout: 70000
     }
 };

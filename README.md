@@ -13,3 +13,14 @@ npm install
 ````
 npm run test
 ````
+
+# Options
+* Run tests using firefox browser
+```
+npm run test -- --firefox
+```
+
+* Several browser instances
+```
+npm run test -- --instance <number>
+```
